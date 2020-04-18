@@ -9,7 +9,7 @@ class BlogApp extends StatelessWidget {
     return MaterialApp(
       title: "Blog App",
       theme: ThemeData(
-        primarySwatch: Colors.pink,        
+        primarySwatch: Colors.pink,     
       ),
       home: LoginRegisterPage(),
       debugShowCheckedModeBanner: false,
