@@ -17,8 +17,15 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
   String _email = "";
   String _password = "";
 
-  void validateAndSave(){
-
+  bool validateAndSave(){
+    final form = formKey.currentState;
+    if(form.validate()){
+      form.save();
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
   void moveToRegister(){
@@ -44,13 +51,15 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
       ),
 
       body: Container(
-        margin: EdgeInsets.all(15.0),
-        child: Form(
-          key: formKey,
-
-          child:Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: createInputs() + createButtons(),
+        color: Colors.grey[300],
+        child: Container(          
+          margin: EdgeInsets.all(15.0),
+          child: Form(
+            key: formKey,
+            child:Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: createInputs() + createButtons(),
+            ),
           ),
         ),
       ),
@@ -67,7 +76,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
       //Email
       TextFormField(
         decoration: InputDecoration(
-          labelText: 'Email'
+          labelText: 'Email',
         ),
         validator: (value){
           return value.isEmpty ? 'Email is required' : null;
@@ -83,6 +92,13 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         decoration: InputDecoration(
           labelText: 'Password'
         ),
+        obscureText: true,
+        validator: (value){
+          return value.isEmpty ? 'Password is required' : null;
+        },
+        onSaved: (value){
+          return _password = value;
+        },
       ),
       SizedBox(height: 20.0),
     ];
@@ -94,7 +110,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         tag: 'hero',
         child: CircleAvatar(
           backgroundColor: Colors.transparent,
-          radius: 55.0,
+          radius: 40.0,
           child: Image.asset('images/homelogo.png'),
         ),
       );   
