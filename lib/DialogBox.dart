@@ -7,17 +7,33 @@ class DialogBox{
       barrierDismissible: true,
       builder: (BuildContext context){
         return AlertDialog(
-          title: Text(title),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18),
+          ),
+          backgroundColor: Colors.black,
+          title: Text(
+            title,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.redAccent,
+            ),
+          ),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(description),
+                Text(
+                  description,
+                  style: TextStyle(
+                    color: Colors.blue,
+                  ),
+                ),
+                
               ],
             ),
           ),
           actions: <Widget>[
             FlatButton(
-              child: Text("OK"),
+              child: Text("Okay"),
               onPressed: (){
                 return Navigator.pop(context);
               },    
