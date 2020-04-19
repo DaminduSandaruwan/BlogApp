@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'Authentication.dart';
 
 class LoginRegisterPage extends StatefulWidget {
+  LoginRegisterPage({
+    this.auth,
+    this.onSignedIn,
+  });
+  final AuthImplementaion auth;
+  final VoidCallback onSignedIn;
   @override
   _LoginRegisterPageState createState() => _LoginRegisterPageState();
+
 }
 
 enum FormType{
@@ -25,6 +33,26 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
     }
     else{
       return false;
+    }
+  }
+
+  void validateAndSubmit() async{
+    if (validateAndSave()){
+      try{
+        if(_formType==FormType.login){
+          String userId = await widget.auth.SignIn(_email, _password);
+          print("Loging UserId= " + userId);
+        }
+        else{
+          String userId = await widget.auth.SignUp(_email, _password);
+          print("Register UserId= " + userId);
+        }
+
+        widget.onSignedIn();
+      }
+      catch(e){
+        print("Error = " + e.toString());
+      }
     }
   }
 
@@ -124,7 +152,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
             child: Text("Login", style: TextStyle(fontSize: 20.0)),
             textColor: Colors.white,
             color: Colors.pink,
-            onPressed: validateAndSave,
+            onPressed: validateAndSubmit,
           ),
 
           //CreateButton
@@ -143,7 +171,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
             child: Text("Create", style: TextStyle(fontSize: 20.0)),
             textColor: Colors.white,
             color: Colors.pink,
-            onPressed: validateAndSave,
+            onPressed: validateAndSubmit,
           ),
 
           //CreateButton
