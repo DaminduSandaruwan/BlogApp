@@ -189,4 +189,3 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
   }
 
 }
-

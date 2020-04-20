@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "524488575240",
-    "firebase_url": "https://myblogapp-8cd3d.firebaseio.com",
-    "project_id": "myblogapp-8cd3d",
-    "storage_bucket": "myblogapp-8cd3d.appspot.com"
+    "project_number": "804232612855",
+    "firebase_url": "https://dsblogapp.firebaseio.com",
+    "project_id": "dsblogapp",
+    "storage_bucket": "dsblogapp.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:524488575240:android:d05ef26f72c18c123204bd",
+        "mobilesdk_app_id": "1:804232612855:android:6fda061bca2e318ceffcf2",
         "android_client_info": {
-          "package_name": "com.example.blog_app"
+          "package_name": "com.damindu.blog_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "524488575240-82rch0d4sc0o2nvf8unkh6b7a74p5orf.apps.googleusercontent.com",
+          "client_id": "804232612855-eb43jlqgt02esp3j2idpa8l4hfhk8mtq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCbrH3QcIeTci3I-CUIIKwUxP92omSBWtg"
+          "current_key": "AIzaSyDjw8h2RfzHtnLyMSPNG-dABWhi46GxGYs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "524488575240-82rch0d4sc0o2nvf8unkh6b7a74p5orf.apps.googleusercontent.com",
+              "client_id": "804232612855-eb43jlqgt02esp3j2idpa8l4hfhk8mtq.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

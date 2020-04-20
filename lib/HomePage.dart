@@ -66,6 +66,7 @@ class _HomePageState extends State<HomePage> {
       ),
       
       body: Container(
+        color: Colors.red[100],
         child: postsList.length == 0 
         ? Text("No Blog Post Available") 
         : ListView.builder(
@@ -120,6 +121,7 @@ class _HomePageState extends State<HomePage> {
       elevation: 10.0,
       margin: EdgeInsets.all(15.0),
       child: Container(
+        color: Colors.grey[400],
         padding: EdgeInsets.all(14.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
