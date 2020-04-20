@@ -65,7 +65,7 @@ void saveToDatabase(url){
   DatabaseReference ref = FirebaseDatabase.instance.reference();
   var data = {
     "image": url,
-    "Description": _myValue,
+    "description": _myValue,
     "date": date,
     "time": time,
   };
