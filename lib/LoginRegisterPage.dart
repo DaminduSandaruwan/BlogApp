@@ -79,7 +79,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text("My Blog App")),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.red,
       ),
 
       body: Container(
@@ -155,7 +155,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
           RaisedButton(
             child: Text("Login", style: TextStyle(fontSize: 20.0)),
             textColor: Colors.white,
-            color: Colors.pink,
+            color: Colors.redAccent,
             onPressed: validateAndSubmit,
           ),
 

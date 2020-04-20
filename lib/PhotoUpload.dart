@@ -1,3 +1,4 @@
+import 'package:blog_app/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -15,6 +16,7 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
 
   File sampleImage;
   String _myValue;
+  String url;
   final formKey = GlobalKey<FormState>();
 
   Future getImage() async{
@@ -35,6 +37,52 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
     }
   }
 
+  void uploadStatusImage() async{
+    if(validateAndSave()){
+      final StorageReference postImageRef = FirebaseStorage.instance.ref().child("Post Images");
+      var timeKey = DateTime.now();
+      final StorageUploadTask uploadTask = postImageRef.child(timeKey.toString()+".jpg").putFile(sampleImage);
+      var ImageUrl = await (await uploadTask.onComplete).ref.getDownloadURL();
+      url = ImageUrl.toString();
+      print("Image url = " + url);
+
+      goToHome();
+
+      saveToDatabase(url);
+
+
+    }
+  }
+
+void saveToDatabase(url){
+  var dbTimeKey = DateTime.now();
+  var formatDate = DateFormat('MMM d, yyyy');
+  var formatTime = DateFormat('EEEE, hh:mm aaa');
+
+  String date = formatDate.format(dbTimeKey);
+  String time = formatTime.format(dbTimeKey);
+
+  DatabaseReference ref = FirebaseDatabase.instance.reference();
+  var data = {
+    "image": url,
+    "Description": _myValue,
+    "date": date,
+    "time": time,
+  };
+
+  ref.child("Posts").push().set(data);
+}  
+
+void goToHome(){
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context){
+      return HomePage();
+    }
+    )
+  );
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +92,11 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
         centerTitle: true,
         backgroundColor: Colors.red,
       ),
-      body: Center(
-        child: sampleImage == null? Text("Select an Image"): enableUpload(),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Center(
+          child: sampleImage == null? Text("Select an Image"): enableUpload(),
+        ),
       ),
       
       floatingActionButton: FloatingActionButton(
@@ -82,7 +133,7 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
               child: Text("Add a New Post "),
               textColor: Colors.white,
               color: Colors.red,
-              onPressed: validateAndSave,
+              onPressed: uploadStatusImage,
             ),
           ],
         ),

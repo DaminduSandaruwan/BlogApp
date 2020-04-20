@@ -34,14 +34,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home"),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.red,
       ),
       
       body: Container(
         
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.black,
+        color: Colors.redAccent,
         child: Container(
           margin: const EdgeInsets.only(left: 70.0,right: 70.0),
           child: Row(
@@ -50,14 +50,14 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               IconButton(
                 icon: Icon(Icons.flip_to_back),
-                iconSize: 50,
-                color: Colors.green,
+                iconSize: 30,
+                color: Colors.black,
                 onPressed: _logoutUser,
               ),
               IconButton(
                 icon: Icon(Icons.add_a_photo),
-                iconSize: 40,
-                color: Colors.blue,
+                iconSize: 30,
+                color: Colors.black,
                 onPressed: (){
                   Navigator.push
                   (
