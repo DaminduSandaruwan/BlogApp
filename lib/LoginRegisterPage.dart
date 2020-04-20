@@ -42,12 +42,12 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
       try{
         if(_formType==FormType.login){
           String userId = await widget.auth.SignIn(_email, _password);
-          dialogBox.information(context, "Congratulations!", "You are Logged in Successfully");
+          //dialogBox.information(context, "Congratulations!", "You are Logged in Successfully");
           print("Loging UserId= " + userId);
         }
         else{
           String userId = await widget.auth.SignUp(_email, _password);
-          dialogBox.information(context, "Congratulations!", "Your account has been created Successfully!");
+          //dialogBox.information(context, "Congratulations!", "Your account has been created Successfully!");
           print("Register UserId= " + userId);
         }
 

@@ -1,3 +1,4 @@
+import 'package:blog_app/PhotoUpload.dart';
 import 'package:flutter/material.dart';
 import 'Authentication.dart';
 
@@ -57,7 +58,15 @@ class _HomePageState extends State<HomePage> {
                 icon: Icon(Icons.add_a_photo),
                 iconSize: 40,
                 color: Colors.blue,
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.push
+                  (
+                    context,
+                    MaterialPageRoute(builder: (context){
+                      return UploadPhotoPage();
+                    })
+                  );
+                },
               ),
             ],
           ),
