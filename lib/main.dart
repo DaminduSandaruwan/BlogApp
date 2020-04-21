@@ -8,7 +8,7 @@ class BlogApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Blog App",
+      title: "DS Blog App",
       theme: ThemeData(
         primarySwatch: Colors.pink,     
       ),
